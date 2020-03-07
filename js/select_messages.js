@@ -12,8 +12,8 @@ var select_messages = function () {
 
 	//Send the users for the conversation to the PHP
 	let formData = new FormData();
-	formData.append("chatid",window.localStorage.getItem("chatid"));
-	formData.append("chatwith",window.localStorage.getItem("chatwith"));
+	formData.append("user_current",window.localStorage.getItem("user_current"));
+	formData.append("user_partner",window.localStorage.getItem("user_partner"));
 
 	//Will contain the raw data from the DB
 	let itemRaw = [];
@@ -44,7 +44,7 @@ var select_messages = function () {
 				let messageContent = document.createElement('p');
 				let messageDetails = document.createElement('p');
 
-				if (itemRaw[c].from_user == window.localStorage.getItem("chatid")) {
+				if (itemRaw[c].from_user == window.localStorage.getItem("user_current")) {
 					messageDIV.classList.add("from");
 				}
 
@@ -63,10 +63,10 @@ var select_messages = function () {
 	//xhr.send();
 	xhr.send(formData);
 };
-if (window.localStorage.getItem("chatid") == null) {
+if (window.localStorage.getItem("user_current") == null) {
 	window.location.href = "index.html";
 }
-else if (window.localStorage.getItem("chatwith") == null) {
+else if (window.localStorage.getItem("user_partner") == null) {
 	window.location.href = "list.html";
 }
 else {

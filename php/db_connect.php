@@ -8,7 +8,7 @@
 $host = "localhost";  // always this value
 $user = "*****";    // your student id
 $pass = "*****";      // your password
-$db = "db1111111";    // your database
+$db = "*****";    // your database
 
 //Establish connection: host, user, password, database
 //The connection variable is called $dbi

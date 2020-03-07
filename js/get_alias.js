@@ -16,18 +16,18 @@ var get_alias = function (id,e) {
 	let itemRaw = [];
 
 	//Connect to the PHP
-    xhr.open("POST", php, true);
-    xhr.onreadystatechange = function() {
-        //This is stuff to tell us what is going on
-    	console.log('readyState: ' + xhr.readyState);
-        console.log('status: ' + xhr.status);
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            //Everything ok, get the names in JSON
-            itemRaw = JSON.parse(xhr.responseText);
+	xhr.open("POST", php, true);
+	xhr.onreadystatechange = function() {
+		//This is stuff to tell us what is going on
+		console.log('readyState: ' + xhr.readyState);
+		console.log('status: ' + xhr.status);
+		if (xhr.readyState == 4 && xhr.status == 200) {
+			//Everything ok, get the names in JSON
+			itemRaw = JSON.parse(xhr.responseText);
 			//console.log(itemRaw); // print response
 
 			document.getElementById(e).innerHTML = itemRaw[0].alias;
-        }
+		}
 	};
 	xhr.send(formData);
 };

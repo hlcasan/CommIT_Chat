@@ -10,13 +10,13 @@ error_reporting(E_ALL);
 if ($dbi) {
     //Build the SQL query
     $content = $_REQUEST['content'];
-    $chatid = $_REQUEST['chatid'];
-    $chatwith= $_REQUEST['chatwith'];
+    $user_current = $_REQUEST['user_current'];
+    $user_partner= $_REQUEST['user_partner'];
 
     //This is to make sure the message appears as entered
     $content = htmlentities($content,ENT_QUOTES);
 
-    $q = "INSERT INTO chat_messages (content, from_user, to_user) VALUES (?,?,?)";
+    $q = ""; /* PROVIDE YOUR OWN SQL */
 
     //This should contain 1 when the line is inserted
     $insertedRows = 0;
@@ -25,7 +25,7 @@ if ($dbi) {
     if ($insertStmt = $dbi->prepare($q)) {
         //update bind parameter types & variables as required
         //s=string, i=integer, d=double, b=blob
-        $insertStmt->bind_param("sii", $content, $chatid, $chatwith);
+        $insertStmt->bind_param("sii", $content, $user_current, $user_partner);
         $insertStmt->execute();
         $insertedRows += $insertStmt->affected_rows;
     } else {

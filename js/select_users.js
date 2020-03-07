@@ -12,7 +12,7 @@ var select_users = function () {
 
 	//EXCLUDE CURRENT USER FROM LIST
 	let formData = new FormData();
-	formData.append("current",window.localStorage.getItem("chatid"));
+	formData.append("user_current",window.localStorage.getItem("user_current"));
 
 	//Will contain the raw data from the DB
 	let itemRaw = [];
@@ -38,18 +38,9 @@ var select_users = function () {
 				//c contains every user found, one at a time
 				console.log(c);
 
-				//Container div for each person
-				let userDIV = document.createElement('div');
-
-				//Setup links for each user
-				userDIV.innerHTML = itemRaw[c].alias;
-				userDIV.addEventListener("click", function () {
-					window.localStorage.setItem("chatwith",itemRaw[c].id);
-					window.location.href = "convo.html";
-				});
-
-				//Dump the link in the container
-				container.appendChild(userDIV);
+				/* BUILD YOUR OWN HTML FOR THE USERS LIST
+				*  REMEMBER TO ASSIGN THE ID OF THE USER TO EACH ITEM
+				*  SO WHEN YOU CLICK IT, THE USER IS SELECTED */
 
 			}
         }
@@ -58,7 +49,7 @@ var select_users = function () {
 	//EXCLUDE CURRENT USER
 	xhr.send(formData);
 };
-if (window.localStorage.getItem("chatid") == null) {
+if (window.localStorage.getItem("user_current") == null) {
 	window.location.href = "index.html";
 }
 else {

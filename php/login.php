@@ -16,8 +16,8 @@ if ($dbi) {
 
     if ($stmt = $dbi->prepare($q)) {
         //Prepare input
-        $name = $_POST['name'];
-        $pass = $_POST['pass'];
+        $name = $_REQUEST['name'];
+        $pass = $_REQUEST['pass'];
         $stmt->bind_param("ss",$name,$pass);
 
         //Prepare output

@@ -9,9 +9,7 @@ error_reporting(E_ALL);
 
 if ($dbi) {
     // SQL query
-    //$q = "SELECT id,alias FROM chat_users";
-    // EXCLUDE CURRENT USER
-    $q = "SELECT id,alias FROM chat_users WHERE id != ?";
+    $q = ""; /* PROVIDE YOUR OWN SQL */
 
     // Array to translate to json
     $rArray = array();
@@ -19,19 +17,18 @@ if ($dbi) {
     if ($stmt = $dbi->prepare($q)) {
         // EXCLUDE CURRENT USER
         //Prepare input
-        $current = $_POST['current'];
-        $stmt->bind_param("i",$current);
+        $user_current = $_REQUEST['user_current'];
+        $stmt->bind_param("i",$user_current);
 
         //Prepare output
         $stmt->execute();
         $stmt->store_result();
-        $stmt->bind_result($rId,$rAlias);
+        $stmt->bind_result(/* USE YOUR OWN VARIABLE */);
 
         //Collect results
         while($stmt->fetch()) {
             $rArray[] = [
-                "id"=>$rId,
-                "alias"=>$rAlias
+                /* SETUP YOUR OWN ARRAY */
             ];
         }
         

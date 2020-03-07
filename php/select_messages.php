@@ -19,9 +19,9 @@ if ($dbi) {
 
     if ($stmt = $dbi->prepare($q)) {
         //Prepare input
-        $chatid = $_POST['chatid'];
-        $chatwith = $_POST['chatwith'];
-        $stmt->bind_param("iiii",$chatid,$chatwith,$chatid,$chatwith);
+        $user_current = $_REQUEST['user_current'];
+        $user_partner = $_REQUEST['user_partner'];
+        $stmt->bind_param("iiii",$user_current,$user_partner,$user_current,$user_partner);
 
         //Prepare output
         $stmt->execute();

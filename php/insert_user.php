@@ -13,7 +13,7 @@ if ($dbi) {
     $alias = $_REQUEST['alias'];
     $pass = $_REQUEST['pass'];
 
-    $q = "INSERT INTO chat_users (name, alias, pass) VALUES (?,?,?)";
+    $q = ""; /* PROVIDE YOUR OWN SQL */
 
     //This should contain 1 when the line is inserted
     $insertedRows = 0;

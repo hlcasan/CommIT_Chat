@@ -16,8 +16,8 @@ var insert_message = function() {
         //This is what we send to the server for the PHP file
         const xhr = new XMLHttpRequest();
         let formData = new FormData(addForm);
-        formData.append("chatid",window.localStorage.getItem("chatid"));
-        formData.append("chatwith",window.localStorage.getItem("chatwith"));
+        formData.append("user_current",window.localStorage.getItem("user_current"));
+        formData.append("user_partner",window.localStorage.getItem("user_partner"));
 
         //Connect to the PHP
         xhr.open("POST", php, true);

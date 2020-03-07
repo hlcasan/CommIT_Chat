@@ -35,8 +35,7 @@ const login = function() {
                 console.log(itemRaw); // print response
 
                 //Set the local storage
-                window.localStorage.setItem('chatid',itemRaw[0].id);
-                window.localStorage.setItem('chatalias',itemRaw[0].alias);
+                window.localStorage.setItem('user_current',itemRaw[0].id);
 
                 //Navigate to the list of users
                 window.location.href = "list.html";
@@ -45,7 +44,7 @@ const login = function() {
         xhr.send(formData);
     });
 };
-if (window.localStorage.getItem("chatid") == null) {
+if (window.localStorage.getItem("user_current") == null) {
     login();
 }
 else {
