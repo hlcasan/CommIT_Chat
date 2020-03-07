@@ -9,10 +9,7 @@ error_reporting(E_ALL);
 
 if ($dbi) {
     // SQL query
-    $q = "SELECT id,timestamp,from_user,content FROM chat_messages WHERE to_user = ? AND from_user = ?
-        UNION 
-        SELECT id,timestamp,from_user,content FROM chat_messages WHERE from_user = ? AND to_user = ?
-        ORDER BY id";
+    $q = ""; /* PROVIDE YOUR OWN SQL */
 
     // Array to translate to json
     $rArray = array();
@@ -21,20 +18,17 @@ if ($dbi) {
         //Prepare input
         $user_current = $_REQUEST['user_current'];
         $user_partner = $_REQUEST['user_partner'];
-        $stmt->bind_param("iiii",$user_current,$user_partner,$user_current,$user_partner);
+        $stmt->bind_param(/* SET YOUR OWN PARAM */);
 
         //Prepare output
         $stmt->execute();
         $stmt->store_result();
-        $stmt->bind_result($rId,$rTime,$rFrom,$rContent);
+        $stmt->bind_result(/* BIND YOUR OWN RESULTS */);
 
         //Collect results
         while($stmt->fetch()) {
             $rArray[] = [
-                "id"=>$rId,
-                "timestamp"=>$rTime,
-                "from_user"=>$rFrom,
-                "content"=>$rContent
+                /* SETUP YOUR OWN ARRAY */
             ];
         }
         
