@@ -9,7 +9,11 @@ error_reporting(E_ALL);
 
 if ($dbi) {
     // SQL query
-    $q = ""; /* PROVIDE YOUR OWN SQL */
+    /* HERE I’ wrote the query for you, but you need to adapt the column and table names to match yours */
+    $q = "SELECT id,timestamp,from_user,content FROM chat_messages WHERE to_user = ? AND from_user = ?
+        UNION 
+        SELECT id,timestamp,from_user,content FROM chat_messages WHERE from_user = ? AND to_user = ?
+        ORDER BY id";
 
     // Array to translate to json
     $rArray = array();
@@ -18,17 +22,21 @@ if ($dbi) {
         //Prepare input
         $user_current = $_REQUEST['user_current'];
         $user_partner = $_REQUEST['user_partner'];
-        $stmt->bind_param(/* SET YOUR OWN PARAM */);
+        //Here it is important to follow the order in the bind_param, be careful to not change things
+        $stmt->bind_param("iiii",$user_current,$user_partner,$user_current,$user_partner);
 
         //Prepare output
         $stmt->execute();
         $stmt->store_result();
-        $stmt->bind_result(/* BIND YOUR OWN RESULTS */);
+        $stmt->bind_result($rId,$rTime,$rFrom,$rContent);
 
         //Collect results
         while($stmt->fetch()) {
             $rArray[] = [
-                /* SETUP YOUR OWN ARRAY */
+                "id"=>$rId,
+                "timestamp"=>$rTime,
+                "from_user"=>$rFrom,
+                "content"=>$rContent
             ];
         }
         

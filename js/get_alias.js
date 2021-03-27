@@ -2,6 +2,8 @@
 */
 
 var get_alias = function (id,e) {
+//Here id is the id of the user you want to get
+// and e is the id of the HTML you want to put the alias in
 
 	//This is the backend file connecting to the DB
 	const php = "php/get_alias.php";
@@ -22,9 +24,8 @@ var get_alias = function (id,e) {
 		console.log('readyState: ' + xhr.readyState);
 		console.log('status: ' + xhr.status);
 		if (xhr.readyState == 4 && xhr.status == 200) {
-			//Everything ok, get the names in JSON
+			//Everything ok, get the alias in JSON
 			itemRaw = JSON.parse(xhr.responseText);
-			//console.log(itemRaw); // print response
 
 			document.getElementById(e).innerHTML = itemRaw[0].alias;
 		}

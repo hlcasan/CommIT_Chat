@@ -9,11 +9,9 @@ error_reporting(E_ALL);
 
 if ($dbi) {
     //Build the SQL query
-    $name = $_REQUEST['name'];
-    $alias = $_REQUEST['alias'];
-    $pass = $_REQUEST['pass'];
+    /* ??? HERE Collect the data from the HTML form using $_REQUEST[] */
 
-    $q = ""; /* PROVIDE YOUR OWN SQL */
+    $q = "???"; // Write a query to add a new user in your table
 
     //This should contain 1 when the line is inserted
     $insertedRows = 0;
@@ -22,9 +20,20 @@ if ($dbi) {
     if ($insertStmt = $dbi->prepare($q)) {
         //update bind parameter types & variables as required
         //s=string, i=integer, d=double, b=blob
-        $insertStmt->bind_param("sss", $name, $alias, $pass);
+        $insertStmt->bind_param(/* ??? */);//Here put the code to setup the bind_param
         $insertStmt->execute();
-        $insertedRows += $insertStmt->affected_rows;
+        
+        /* Here you can set it up to log in automatically like the To Do app
+        You’ll need to setup the JS too for this to work.
+        Looks like this:
+        //Get new user’s ID
+        $rArray[] = [
+            "id"=>$insertStmt->insert_id
+        ];
+
+        echo json_encode($rArray);
+        */
+        
     } else {
         echo "Error";
     }

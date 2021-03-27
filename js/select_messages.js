@@ -1,5 +1,5 @@
-/* Handler for the display of names entered in the DB
-	Uses the var itemRaw which comes json-encoded from the DB through select_names.php
+/* Handler for the display of the conversation
+	Uses the var itemRaw which comes json-encoded from the DB through select_messages.php
 */
 
 var select_messages = function () {
@@ -39,16 +39,22 @@ var select_messages = function () {
 				//c contains every user found, one at a time
 				console.log(c);
 
-				//Container div for each person
+
+				/* I’ve left the code here because there are many elements to it
+				   But you need to customize this, and make it work the way you want
+				   Especially, you need to design the way each message looks: content, timestamp, etc.
+				   */
+				//Container for each message, for content and for timestamp
 				let messageDIV = document.createElement('div');
 				let messageContent = document.createElement('p');
 				let messageDetails = document.createElement('p');
 
+				//If the message is from user_current, add a class to it so we can make it look different
 				if (itemRaw[c].from_user == window.localStorage.getItem("user_current")) {
 					messageDIV.classList.add("from");
 				}
 
-				//Setup links for each user
+				//Insert the values from the DB in the HTML elements
 				messageContent.innerHTML = itemRaw[c].content;
 				messageDetails.innerHTML = itemRaw[c].timestamp;
 
@@ -72,3 +78,10 @@ else if (window.localStorage.getItem("user_partner") == null) {
 else {
 	select_messages();
 }
+
+//Optional automatic refresh of messages, just un comment the block below
+/*
+let refresh = setInterval(function() {
+	select_messages();
+},10000); //10 seconds
+*/

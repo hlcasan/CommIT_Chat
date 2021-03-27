@@ -16,7 +16,7 @@ if ($dbi) {
     //This is to make sure the message appears as entered
     $content = htmlentities($content,ENT_QUOTES);
 
-    $q = ""; /* PROVIDE YOUR OWN SQL */
+    $q = "???"; // Write a query to add a message from user_current to user_partner
 
     //This should contain 1 when the line is inserted
     $insertedRows = 0;

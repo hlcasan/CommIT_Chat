@@ -37,16 +37,17 @@ var select_users = function () {
 			for (let c in itemRaw) {
 				//c contains every user found, one at a time
 				console.log(c);
-
-				/* BUILD YOUR OWN HTML FOR THE USERS LIST
-				*  REMEMBER TO ASSIGN THE ID OF THE USER TO EACH ITEM
-				*  SO WHEN YOU CLICK IT, THE USER IS SELECTED */
+				
+				/* HERE Setup your own code for the list of users
+				   The list must include the user’s aliases
+				   When you click one alias, you need to do two things:
+				   1. Set the id of the partner user in the local storage
+				   2. Navigate to the convo.html file
+				*/
 
 			}
         }
 	};
-	//xhr.send();
-	//EXCLUDE CURRENT USER
 	xhr.send(formData);
 };
 if (window.localStorage.getItem("user_current") == null) {

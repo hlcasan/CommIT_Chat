@@ -9,7 +9,7 @@ error_reporting(E_ALL);
 
 if ($dbi) {
     // SQL query
-    $q = "SELECT alias FROM chat_users WHERE id = ?";
+    $q = "???"; //Write a query to get the alias of a user by providing the id
 
     // Array to translate to json
     $rArray = array();

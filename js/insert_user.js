@@ -27,8 +27,12 @@ var insert_user = function() {
                 // Everything ok, get the response
                 console.log(xhr.responseText);
 
-                // Replace the form with a message
-                // You will need to adapt this to your needs
+                /* Here you can set it up like you did for the To Do app 
+                   where creating an account automatically logs in the new user
+                   by the DB returning the ID of the new user
+                   See in the PHP
+
+                Otherwise, this will replace the form with a message */
                 addForm.innerHTML = "Account created";
             }
         };

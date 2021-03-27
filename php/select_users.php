@@ -9,7 +9,7 @@ error_reporting(E_ALL);
 
 if ($dbi) {
     // SQL query
-    $q = ""; /* PROVIDE YOUR OWN SQL */
+    $q = "???"; // Write a query to get all the aliases and ids from the OTHER users, not user_current
 
     // Array to translate to json
     $rArray = array();
@@ -23,12 +23,13 @@ if ($dbi) {
         //Prepare output
         $stmt->execute();
         $stmt->store_result();
-        $stmt->bind_result(/* USE YOUR OWN VARIABLE */);
+        $stmt->bind_result($rId,$rAlias);
 
         //Collect results
         while($stmt->fetch()) {
             $rArray[] = [
-                /* SETUP YOUR OWN ARRAY */
+                "id"=>$rId,
+                "alias"=>$rAlias
             ];
         }
         

@@ -9,16 +9,15 @@ error_reporting(E_ALL);
 
 if ($dbi) {
     // SQL query
-    $q = "SELECT id,alias FROM chat_users WHERE name = ? AND pass = ?";
+    $q = "???"; // Write a query to get the id of the provided full name and password
 
     // Array to translate to json
     $rArray = array();
 
     if ($stmt = $dbi->prepare($q)) {
         //Prepare input
-        $name = $_REQUEST['name'];
-        $pass = $_REQUEST['pass'];
-        $stmt->bind_param("ss",$name,$pass);
+        /* ??? HERE Collect the data from the HTML form using $_REQUEST[] */
+        $stmt->bind_param(/* ??? */);//Here put the code to setup the bind_param
 
         //Prepare output
         $stmt->execute();

@@ -13,9 +13,10 @@ var insert_message = function() {
         //This is the backend file inserting in the DB
         const php = "php/insert_message.php";
 
-        //This is what we send to the server for the PHP file
+        //This is what we send to the PHP
         const xhr = new XMLHttpRequest();
         let formData = new FormData(addForm);
+        // We must send the values from local storage
         formData.append("user_current",window.localStorage.getItem("user_current"));
         formData.append("user_partner",window.localStorage.getItem("user_partner"));
 
